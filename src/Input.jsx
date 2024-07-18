@@ -7,7 +7,9 @@ export const add = (val) => {
   if (!value) {
     return sum;
   }
-  const numbers = value.split(",");
+
+  const numbers = value.replaceAll("\n", ",").split(",");
+
   for (let number of numbers) {
     sum += Number(number);
   }
