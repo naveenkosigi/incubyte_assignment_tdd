@@ -18,7 +18,14 @@ export const add = (val) => {
     }
 
     const numbers = value.replaceAll("\n", delimiter).split(delimiter);
+    const negativeNumbers = [];
     for (let number of numbers) {
+      if(Number(number) < 0){
+        negativeNumbers.push(number)        
+      }
+      if(negativeNumbers.length > 0){
+        throw("Stopping as negative number is parsed " + negativeNumbers);
+      }
       sum += Number(number);
     }
   }
@@ -35,7 +42,7 @@ const Input = () => {
 
   return (
     <>
-      <textarea ref={textAreaRef}></textarea>
+      <textarea ref={textAreaRef} style={{minHeight:'5rem',marginTop:'1rem'}}></textarea>
       <br />
       <button type="button" onClick={calculate}>
         Calculate Total

@@ -19,4 +19,10 @@ describe("add Method Test Cases", () => {
     expect(add("//:\n1")).toBe(1);
     expect(add("//:\n1:2:3\n4\n5")).toBe(15);
   });
+
+  test("If negative number is parsed ", () => {
+    expect(() => add("//;\n1\n2;-1;3")).toThrow(
+      "Stopping as negative number is parsed"
+    );
+  });
 });
