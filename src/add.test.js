@@ -14,4 +14,9 @@ describe("add Method Test Cases", () => {
     expect(add("1\n2")).toBe(3);
     expect(add("1\n2,3,4\n10")).toBe(20);
   });
+
+  test("If the delimiter is changed to :", () => {
+    expect(add("//:\n1")).toBe(1);
+    expect(add("//:\n1:2:3\n4\n5")).toBe(15);
+  });
 });

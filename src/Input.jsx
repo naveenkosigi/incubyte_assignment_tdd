@@ -6,12 +6,21 @@ export const add = (val) => {
   let sum = 0;
   if (!value) {
     return sum;
-  }
+  } else {
+    let delimiter = ",";
 
-  const numbers = value.replaceAll("\n", ",").split(",");
+    //check and update the delimeter
+    if (value.startsWith("//")) {
+      delimiter = value.slice(2).split("\n")[0];
 
-  for (let number of numbers) {
-    sum += Number(number);
+      //remove the first line as its only used for identifying the delimiter
+      value = value.slice(value.indexOf("\n") + 1);
+    }
+
+    const numbers = value.replaceAll("\n", delimiter).split(delimiter);
+    for (let number of numbers) {
+      sum += Number(number);
+    }
   }
   return sum;
 };
